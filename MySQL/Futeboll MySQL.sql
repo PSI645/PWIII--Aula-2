@@ -62,6 +62,14 @@ foreign key (posicao_id) references posicoes(id),
 foreign key (id_cid_nas) references cidades(id)
 );
 
+CREATE TABLE uniforme (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    tamanho VARCHAR(10),
+    cor VARCHAR(50),
+    quantidade INT
+);
+
 insert into pais (nome_pais) values
 ('Brasil'),
 ('Argentina'),
@@ -115,6 +123,20 @@ values
 (5, 'Messi', 'Lionel Andrés Messi', 'Craque argentino multicampeão', 'messi.png', '1987-06-24', null, 4),
 
 (3, 'Cafu', 'Marcos Evangelista de Morais', 'Lateral direito campeão do mundo', 'cafu.png', '1970-06-07', null, 2);
+
+select estado.nome_estado,pais.nome_pais
+from estado
+inner join pais on pais.pais_id = estado.pais_id;
+
+select jogadores.nome, cidades.nome, posicoes.nome
+from jogadores
+inner join cidades on cidades.id = jogadores.id_cid_nas
+inner join posicoes on posicoes.id = jogadores.posicao_id;
+
+select jogadores.nome as Jogador, cidades.nome as Cidade, posicoes.nome as Posição
+from jogadores
+inner join cidades on cidades.id = jogadores.id_cid_nas
+inner join posicoes on posicoes.id = jogadores.posicao_id;
 
  
 select * from uniformes;
